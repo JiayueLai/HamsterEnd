@@ -3,7 +3,7 @@ import { View, Image, Text, Block } from "@tarojs/components";
 import { AtActivityIndicator } from "taro-ui";
 import API from "../../service/api";
 import NetworkError from "../../components/network-error";
-import HorizonList from "../../components/horizon-list";
+import HorizonList from "../../components/vertical-list";
 
 import "./index.scss";
 

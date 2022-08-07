@@ -3,27 +3,21 @@ import { View } from "@tarojs/components";
 import PropTypes from "prop-types";
 import { connect } from "@tarojs/redux";
 import {
-  getNewBooks,
-  getHotBooks,
-  getRecommendBooks
+  getHome,
 } from "@store/home/action";
-import Panel from "../../components/panel";
-import HorizonList from "../../components/horizon-list";
-import FakeSearchBar from "../../components/fake-search-bar";
+import VerticalList from "../../components/vertical-list";
 import URL from "../../constants/urls";
 
 import "./index.scss";
+import Banner from "../../components/banner";
 
 @connect(
   ({ home }) => ({
-    newBooks: home.newBooks,
-    hotBooks: home.hotBooks,
-    recommendBooks: home.recommendBooks
+    homeNFT: home.homeNFT,
+    banner: home.banner
   }),
   {
-    dispatchGetNewBooks: getNewBooks,
-    dispatchGetHotBooks: getHotBooks,
-    dispatchGetRecommendBooks: getRecommendBooks
+    dispatchGetHomeNFT: getHome
   }
 )
 export default class Home extends Component {
@@ -32,9 +26,7 @@ export default class Home extends Component {
   };
 
   static propTypes = {
-    newBooks: PropTypes.arrayOf(PropTypes.object),
-    hotBooks: PropTypes.arrayOf(PropTypes.object),
-    recommendBooks: PropTypes.arrayOf(PropTypes.object)
+    homeNFT: PropTypes.arrayOf(PropTypes.object),
   };
 
   constructor() {
@@ -43,15 +35,15 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    Taro.showModal({
-      title: '说明',
-      content: "本项目是一个开源项目，数据均为随机生成，仅供演示使用。",
-      showCancel: false
-    })
-
-    this.props.dispatchGetNewBooks();
-    this.props.dispatchGetHotBooks();
-    this.props.dispatchGetRecommendBooks();
+    // Taro.showModal({
+    //   title: '说明',
+    //   content: "本项目是一个开源项目，数据均为随机生成，仅供演示使用。",
+    //   showCancel: false
+    // })
+    this.props.dispatchGetHomeNFT()
+    // this.props.dispatchGetNewBooks();
+    // this.props.dispatchGetHotBooks();
+    // this.props.dispatchGetRecommendBooks();
   }
 
   onClickSearchBar() {
@@ -61,28 +53,32 @@ export default class Home extends Component {
   render() {
     return (
       <View>
-        <FakeSearchBar onClick={this.onClickSearchBar} />
-        <Panel
-          url={`${URL.BOOK_LIST}?type=new`}
-          title='新书速递'
-          className='panel--first'
-        >
-          <HorizonList data={this.props.newBooks} />
-        </Panel>
-        <Panel
-          url={`${URL.BOOK_LIST}?type=hot`}
-          title='近期热门'
-          className='margin-top-lg'
-        >
-          <HorizonList data={this.props.hotBooks} />
-        </Panel>
-        <Panel
-          url={`${URL.BOOK_LIST}?type=recommend`}
-          title='为你推荐'
-          className='margin-top-lg'
-        >
-          <HorizonList data={this.props.recommendBooks} />
-        </Panel>
+        {/*<FakeSearchBar onClick={this.onClickSearchBar} />*/}
+        <Banner data={this.props.banner} />
+        <VerticalList data={this.props.homeNFT} />
+
+        {/*<HorizonList data={this.props.homeNFT} />*/}
+        {/*<Panel*/}
+          {/*url={`${URL.BOOK_LIST}?type=new`}*/}
+          {/*title='新书速递'*/}
+          {/*className='panel--first'*/}
+        {/*>*/}
+          {/**/}
+        {/*</Panel>*/}
+        {/*<Panel*/}
+          {/*url={`${URL.BOOK_LIST}?type=hot`}*/}
+          {/*title='近期热门'*/}
+          {/*className='margin-top-lg'*/}
+        {/*>*/}
+          {/*<HorizonList data={this.props.hotBooks} />*/}
+        {/*</Panel>*/}
+        {/*<Panel*/}
+          {/*url={`${URL.BOOK_LIST}?type=recommend`}*/}
+          {/*title='为你推荐'*/}
+          {/*className='margin-top-lg'*/}
+        {/*>*/}
+          {/*<HorizonList data={this.props.recommendBooks} />*/}
+        {/*</Panel>*/}
       </View>
     );
   }

@@ -1,8 +1,8 @@
 {
   "miniprogramRoot": "dist/",
   "projectname": "taro-library",
-  "description": "Taro图书小程序",
-  "appid": "wx5b8cfa452106035c",
+  "description": "Project configuration file, more information: https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+  "appid": "wx6cb447b30b262cb4",
   "setting": {
     "urlCheck": false,
     "es6": false,
@@ -36,8 +36,24 @@
     "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
-    "minifyWXSS": true
+    "minifyWXSS": true,
+    "lazyloadPlaceholderEnable": false,
+    "useStaticServer": true,
+    "showES6CompileOption": false,
+    "disableUseStrict": false,
+    "useCompilerPlugins": false,
+    "minifyWXML": true
   },
   "compileType": "miniprogram",
-  "condition": {}
+  "condition": {},
+  "libVersion": "2.25.1",
+  "srcMiniprogramRoot": "dist/",
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  }
 }

@@ -8,6 +8,7 @@
   @include active;
   @include hairline-top-bottom();
   &__img {
+
     flex: 0 0 $book-image-width;
     width: $book-image-width;
     height: $book-image-height;

@@ -24,7 +24,8 @@ class App extends Component {
       "pages/book-list/index",
       "pages/search/index",
       "pages/book-detail/index",
-      "pages/index/index"
+      "pages/index/index",
+      "pages/marketplace/index",
     ],
     window: {
       backgroundTextStyle: "light",
@@ -42,8 +43,8 @@ class App extends Component {
           selectedIconPath: "./assets/tab_home_f.png"
         },
         {
-          pagePath: "pages/index/index",
-          text: "测试",
+          pagePath: "pages/marketplace/index",
+          text: "市场",
           iconPath: "./assets/tab_me.png",
           selectedIconPath: "./assets/tab_me_f.png"
         }

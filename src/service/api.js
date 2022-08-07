@@ -1,6 +1,7 @@
-import Taro from "@tarojs/taro";
-import BASE_URL from "./config";
+import Taro from "@tarojs/taro"
+import { homeURL } from "./config";
 import interceptors from "./interceptors";
+import {homePage} from "../store/home/reducer";
 
 interceptors.forEach(i => Taro.addInterceptor(i));
 
@@ -10,7 +11,7 @@ export default {
     let contentType = "application/json";
     contentType = params.contentType || contentType;
     const option = {
-      url: url.indexOf("http") !== -1 ? url : BASE_URL + url,
+      url: url.indexOf("http") !== -1 ? url : homeURL + url,
       data: data,
       method: method,
       header: {
@@ -20,7 +21,7 @@ export default {
     };
     return Taro.request(option);
   },
-  get(url, data = "") {
+  get(url, data) {
     let option = { url, data };
     return this.baseOptions(option);
   },

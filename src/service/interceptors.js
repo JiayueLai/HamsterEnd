@@ -21,6 +21,7 @@ const customInterceptor = function(chain) {
       return showError(res.errMsg, showToast);
     })
     .then(res => {
+
       // 只要请求成功，不管返回什么状态码，都走这个回调
       if (res.statusCode === HTTP_STATUS.NOT_FOUND) {
         return showError("请求资源不存在", showToast);
@@ -46,8 +47,11 @@ const customInterceptor = function(chain) {
         return showError("需要鉴权", showToast);
       } else if (res.statusCode >= 400) {
         let errorMsg = res.data && res.data.message;
+
         return showError(errorMsg, showToast);
       } else {
+        console.log("final")
+        console.log("lydia final:", res.data)
         return res.data;
       }
     });

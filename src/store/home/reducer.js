@@ -1,5 +1,26 @@
 import * as HOME from "./action-type";
 
+// export interface homePage {
+//   homePageEdition: [],
+//   banners: []
+// }
+
+export class homeSinglePage{
+  constructor(id, imageURL, price, sha) {
+    this.id = id;
+    this.imageURL = imageURL;
+    this.price = price;
+    this.sha = sha;
+  }
+}
+
+export class homePage{
+  constructor(homePageEdition, banners) {
+    this.homePageEdition = homePageEdition;
+    this.banners = banners;
+  }
+}
+
 const defaultState = {
   /**
    * 新上架图书列表
@@ -30,11 +51,18 @@ const defaultState = {
    */
   newBooks: [],
   hotBooks: [],
-  recommendBooks: []
+  recommendBooks: [],
+  homeNFT: [homeSinglePage],
+  banner: "",
+  marketNFT: [homeSinglePage]
 };
 
 const home = (state = defaultState, action) => {
   switch (action.type) {
+    case HOME.GET_MARKETPLACE:
+      return { ...state, marketNFT: state.marketNFT.concat(action.marketNFT)};
+    case HOME.GET_HOMEPAGE:
+      return { ...state, homeNFT: state.homeNFT.concat(action.nft), banner: action.banner};
     case HOME.GET_NEW_BOOK:
       return { ...state, newBooks: state.newBooks.concat(action.books) };
     case HOME.GET_HOT_BOOK:

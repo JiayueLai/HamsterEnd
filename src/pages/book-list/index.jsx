@@ -31,8 +31,8 @@ export default class BookList extends Component {
   componentDidMount() {
     const { type } = this.$router.params;
     switch (type) {
-      case "new":
-        return Taro.setNavigationBarTitle({ title: "新书速递" });
+      /*case "new":
+        return Taro.setNavigationBarTitle({ title: "新书速递" });*/
       case "hot":
         return Taro.setNavigationBarTitle({ title: "近期热门" });
       case "recommend":

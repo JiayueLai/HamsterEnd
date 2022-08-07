@@ -1,0 +1,31 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins/index.scss";
+
+.hompage-wrapper {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+.homepage-vertical-list-contatiner {
+  display: block;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background:$color-black-2;
+  width:90%;
+}
+
+.homepage-vertical-list {
+  &image {
+    display: block;
+    margin-top: 30px;
+  }
+  &_name {
+    color: $color-white;
+  }
+  &_price {
+    color: $color-white;
+  }
+}
